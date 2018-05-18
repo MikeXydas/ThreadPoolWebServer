@@ -6,7 +6,7 @@ VALGRIND_FLAGS = --leak-check=yes --leak-check=full --show-leak-kinds=all --trac
 SERVING_PORT = 8085
 COMMAND_PORT = 9085
 WEB_SERVER_THREADS = 10
-ROOT_DIR = /home/mike/Desktop/SysPro/assign3Collective/assign3/webSites/
+ROOT_DIR = /home/mike/Desktop/threadPoolWebServer/webSites/
 HOST = localhost
 REQ_SITE = /site0/page0_4119.html
 
