@@ -3,7 +3,7 @@
   
 ## Introduction
 
-This is a basic server that will anwser simple `HTTP/1.1` requests. The main thread receives the request and a reader thread will anwser providing the whole html file requested (or any file that exists in the `<server_directory>`).
+This is a basic server that will answer simple `HTTP/1.1` requests. The main thread receives the request and a reader thread will answer providing the whole HTML file requested (or any file that exists in the `<server_directory>`).
   
   
 ## Compile
@@ -17,9 +17,9 @@ I suggest going through the `Makefile` as you read this part
   
 ## Run server
 
-The server constantly listens on 2 ports. The `serving_port` is for anwsering the site requests, the  `command_port` is for anwsering/executing basic commands. Implemented commands are STATS which returns time_running | pages_sent | bytes_sent and SHUTDOWN which begins the shutdown sequence of the server.  
+The server constantly listens on 2 ports. The `serving_port` is for answering the site requests, the  `command_port` is for answering/executing basic commands. Implemented commands are STATS which returns time_running | pages_sent | bytes_sent and SHUTDOWN which begins the shutdown sequence of the server.  
   
-Also the server needs a directory which will search for the files requested. In my repo the `webSites` directory has these files.  
+Also, the server needs a directory which will search for the files requested. In my repo, the `webSites` directory has these files.  
 
 **Necessary flags:**  
       1. `-p <serving_port>`  
@@ -61,7 +61,7 @@ It creates `w` websites and each website has `p` pages.
 e.x. `./webcreator.sh webSites text 5 5`  
   
 1. `<base_directory>` : A file preferably located in the starting directory of this repo. **Must already exist before executing the shell.**  
-2. `<text_file>` : A sample text file that we use to create the html files. My repository has the `Twenty Thousand Leagues under the Sea by Jules Verne` http://www.gutenberg.org/ebooks/164   
+2. `<text_file>` : A sample text file that we use to create the HTML files. My repository has the `Twenty Thousand Leagues under the Sea by Jules Verne` http://www.gutenberg.org/ebooks/164   
 (If you want to put your text file, in order for the script to work you should put something with 10.000 lines or more).  
 3. `<w>` : Number of websites created  
 4. `<p>` : Number of pages each website has
