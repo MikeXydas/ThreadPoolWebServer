@@ -23,10 +23,22 @@ char * readRequest(char * req)
 
         //check that the ending is correct
         int reqLength = strlen(req);
+        int correctFormat = 0;
 
-        if((req[reqLength - 4] != '\r') || (req[reqLength - 3] != '\n') || (req[reqLength - 2] != '\r') || (req[reqLength - 1] != '\n'))
+        //Formal \r\n endings
+        if((req[reqLength - 4] == '\r') && (req[reqLength - 3] == '\n') && (req[reqLength - 2] == '\r') && (req[reqLength - 1] == '\n'))
+                correctFormat = 1;
+
+        //Only \n endings
+        if((req[reqLength - 2] == '\n') && (req[reqLength - 1] == '\n'))
+                correctFormat = 1;
+
+        if(correctFormat == 0)
                 return WRONG_REQ_FORMAT;
 
+        //Check HOST field exists
+        if(hostFieldExists(req) == NO_HOST_FIELD)
+                return WRONG_REQ_FORMAT;
 
         while(req[msgPointer] != ' ')
         {
@@ -145,6 +157,19 @@ char * createAnwser(char * site, char * rootDir)
 
         return msg;
 
+}
+
+int hostFieldExists(char * header)
+{
+        char * hostStart = strstr(header, "Host: ");
+        if(hostStart == NULL)
+                return NO_HOST_FIELD;
+
+        if(hostStart[6] == ' ' || hostStart[6] == '\r' || hostStart[6] == '\n')
+                return NO_HOST_FIELD;
+
+        return HOST_FIELD_EXISTS;
+        
 }
 
 char * parseArrayToMsg(char ** array)
