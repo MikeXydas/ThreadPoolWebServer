@@ -3,7 +3,7 @@
   
 ## Introduction
 
-This is a basic server that will answer simple `HTTP/1.1` requests. The main thread receives the request and a reader thread will answer providing the whole HTML file requested (or any file that exists in the `<server_directory>`).
+This is a basic server that will answer simple `HTTP/1.1` requests. The main thread accepts the connect from the client and a reader thread will read the request and answer providing the whole HTML file requested (or any file that exists in the `<server_directory>`).
   
   
 ## Compile
