@@ -66,4 +66,6 @@ e.x. `./webcreator.sh webSites text 5 5`
 3. `<w>` : Number of websites created  
 4. `<p>` : Number of pages each website has
 
+The script is slow since it uses the `sed` command for every line being printed on the websites.
+
 
