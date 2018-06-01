@@ -37,8 +37,8 @@ In the `Makefile` you can also see a runServer rule. You can use that too, if yo
 
 The simplest test would be to open your browser and go to:  
     `http://localhost:<serving_port>/<path_to_the_site_from_server_directory>`  
-     e.x.: `http://localhost:8085/site2/page2_1667.html/`
-     
+     e.x.: `http://localhost:8085/site2/page2_1667.html/`  
+As you can see thw webServer will not serve any page. Just only the ones being saved in the root_directory.  
 Or you can use the siteReq test program located in the `webServerTests` directory.  
   
 **Test programs execution:**  
