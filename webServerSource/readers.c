@@ -32,10 +32,20 @@ void * reader()
                         bufferPointer++;
                 }
                 headerBuf[bufferPointer + 1] = '\0';
+
                 char *  anwser = createAnwser(readRequest(headerBuf), rootdir);
 
-                if(write(fd, anwser, strlen(anwser)) < 0)
-                        perror("Write of anwser from request failed");
+                int charactersServed = 0;
+                while(charactersServed != strlen(anwser))
+                {
+                        int currentWrite = write(fd, &anwser[charactersServed], strlen(anwser) - charactersServed);
+                        if(currentWrite < 0)
+                                perror("Failed to write search result on socket");
+
+                        charactersServed += currentWrite;
+                }
+                //if(write(fd, anwser, strlen(anwser)) < 0)
+                //        perror("Write of anwser from request failed");
 
                 printf("        >>>Thread %ld succesfully anwsered serving port request\n", pthread_self());
 
@@ -67,7 +77,7 @@ void commandReader(int fd)
         {
                 shutdownReceived = 1;
                 pthread_cond_broadcast(&cond_read);
-                printf("\n              >>> Received SHUTDOWN command. Shutting down <<<\n");
+                printf("\n              >>> Received SHUTDOWN command. Server shutting down <<<\n");
         }
         else
         {

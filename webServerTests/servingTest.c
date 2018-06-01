@@ -42,7 +42,8 @@ void main(int argc, char *argv[]) {
         //GET request creation
         strcpy(buf, "GET ");
         strcat(buf, argv[3]);
-        strcat(buf, " HTTP/1.1\r\n\r\n");
+        strcat(buf, " HTTP/1.1\r\n");
+        strcat(buf, "Host: localhost\r\n\r\n");
         
         //strcpy(buf, "GET /site0/page0_465.html HTTP/1.1\r\n\r\n");
 

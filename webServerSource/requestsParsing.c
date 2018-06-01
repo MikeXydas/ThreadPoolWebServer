@@ -120,13 +120,17 @@ char * createAnwser(char * site, char * rootDir)
                 totalPages++;
                 pthread_mutex_unlock(&statsMut);
         }
+        else if(fileAccess == NO_PERMS)
+                length = strlen(NO_PERMS_MSG);
+        else if(fileAccess == NO_FILE)
+                length = strlen(NO_FILE_MSG);
         else
-                length = 124;
+                length = strlen(BAD_REQUEST_MSG);
 
-        if(fileAccess == SUCCESS)
-                applyContentLength(arrayAnwser, length);
-        else
-                applyContentLength(arrayAnwser, 128);
+        //if(fileAccess == SUCCESS)
+        //        applyContentLength(arrayAnwser, length);
+        //else
+        applyContentLength(arrayAnwser, length);
 
         //5th line
         arrayAnwser[4] = (char *) malloc((strlen(CONTENT_TYPE) + 1) * sizeof(char));
@@ -241,8 +245,9 @@ void applyContent(char ** array, int fileAccess, FILE * fp, int length)
         {
                 int chars = countCharacters(fp);
                 array[7] = (char *) malloc((chars + 1) * sizeof(char));
-                for(int whichChar = 0; whichChar < chars; whichChar++)
-                        array[7][whichChar] = getc(fp);
+                fread(array[7], chars, sizeof(char), fp);
+                //for(int whichChar = 0; whichChar < chars; whichChar++)
+                //        array[7][whichChar] = getc(fp);
                 array[7][chars] = '\0';
         }
         else if(fileAccess == NO_PERMS)

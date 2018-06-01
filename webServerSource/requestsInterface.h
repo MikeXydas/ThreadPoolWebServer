@@ -11,6 +11,9 @@
 
 #define LINES_ANWSER 8
 
+#define NO_HOST_FIELD -1
+#define HOST_FIELD_EXISTS 0
+
 #define SERVER "Server: myhhtpd/1.0.0 (Ubuntu64)"
 #define CONTENT_LENGTH "Content-Length: "
 #define CONTENT_TYPE "Content-Type: text/html"
@@ -30,6 +33,7 @@ char * parseArrayToMsg(char ** array);
 void applyDate(char ** buf);
 void applyContentLength(char ** buf, int length);
 void applyContent(char ** buf, int fileAccess, FILE * fp, int length);
+int hostFieldExists(char * header);
 
 int digitsOfInt(unsigned long int integer);
 int countCharacters(FILE * inputFile);

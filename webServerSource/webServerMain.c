@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 {
         gettimeofday(&begin, NULL);
 
-        printf(">>> Server is booting...\n");
+        printf("\n>>> Server is booting...\n");
 
         int numbOfThreads = -1 , reqPort = -1, commPort = -1, err;
         rootdir[0] = '!';
@@ -134,7 +134,8 @@ int main(int argc, char *argv[])
         pthread_cond_destroy(&cond_read);
         pthread_cond_destroy(&cond_write);
         pthread_mutex_destroy(&queueMutex);
-
+        pthread_mutex_destroy(&statsMut);
+        
         return 0;
 }
 

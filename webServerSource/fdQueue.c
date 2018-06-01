@@ -104,6 +104,7 @@ void deleteQueueNode(queueNode * node)
                 deleteQueueNode(node->nextNode);
         free(node);
 }
+
 void enterWrite()
 {
         pthread_mutex_lock(&queueMutex);

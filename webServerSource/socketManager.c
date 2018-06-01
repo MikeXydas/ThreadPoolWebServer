@@ -21,6 +21,10 @@ int bindSockToPort(int port)
         if ((sock=socket(AF_INET, SOCK_STREAM, 0))<0) 
                 perror("Failed to create server socket");
 
+        int enable = 1;
+        if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
+                perror("setsockopt(SO_REUSEADDR) failed");
+                
         server.sin_family = AF_INET;
         server.sin_addr.s_addr = htonl(INADDR_ANY);
         server.sin_port = htons(port); 
@@ -29,7 +33,7 @@ int bindSockToPort(int port)
         if (bind(sock, server_ptr, sizeof(server)) < 0)
                 perror("Failed to bind server socket");
 
-        if (listen(sock,2)!=0) 
+        if (listen(sock,200)!=0) 
                 perror("Failed to listen to server scoket");
 
         return sock;
@@ -70,3 +74,4 @@ int acceptConnection(int * fds, struct sockaddr *addr, socklen_t *addrlen, int *
         else
                 return accept(fd, addr, addrlen);
 }
+
