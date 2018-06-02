@@ -23,6 +23,8 @@
 #define NO_FILE_MSG "<html>Sorry dude, couldn't find this file.</html>"
 #define BAD_REQUEST_MSG "<html> Request sent does not follow the http1.1 format.</html>"
 
+extern char * hostname;
+
 extern char rootdir[200];
 
 char * readRequest(char * req);
@@ -38,6 +40,7 @@ int hostFieldExists(char * header);
 int digitsOfInt(unsigned long int integer);
 int countCharacters(FILE * inputFile);
 
+void initialiseHostname();
 
 void printMsg(char ** array);
 

@@ -17,6 +17,7 @@
 #include "readersInterface.h"
 #include "socketInterface.h"
 
+
 int main(int argc, char *argv[])
 {
         gettimeofday(&begin, NULL);
@@ -55,6 +56,7 @@ int main(int argc, char *argv[])
                 return 1;
         }
 
+        initialiseHostname();
 
         //Mutexes/conds initialisation
         pthread_mutex_init(&queueMutex, 0);
@@ -128,6 +130,7 @@ int main(int argc, char *argv[])
 
         free(readers);
         free(fds);
+        free(hostname);
         deleteQueue(fdQueue);
         pthread_cond_destroy(&cond_read);
         pthread_cond_destroy(&cond_write);

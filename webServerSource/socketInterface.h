@@ -8,5 +8,6 @@
 
 int bindSockToPort(int port);
 int acceptConnection(int * fds, struct sockaddr *addr, socklen_t *addrlen, int * whichPort);
+//void initialiseHostname();
 
 #endif

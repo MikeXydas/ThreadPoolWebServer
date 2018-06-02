@@ -4,11 +4,13 @@
 #include <errno.h>
 #include <time.h>
 #include <pthread.h>
+#include <unistd.h>
 
 #include "requestsInterface.h"
 #include "readersInterface.h"
 
 char rootdir[200];
+char * hostname;
 
 char * readRequest(char * req)
 {
@@ -105,8 +107,10 @@ char * createAnwser(char * site, char * rootDir)
         applyDate(arrayAnwser);
 
         //3rd line
-        arrayAnwser[2] = (char *) malloc((strlen(SERVER) + 1) * sizeof(char));
-        strcpy(arrayAnwser[2], SERVER);
+        arrayAnwser[2] = (char *) malloc((strlen(hostname) + 1) * sizeof(char));
+        strcpy(arrayAnwser[2], hostname);
+
+
 
         //4th line
         int length = -1;
@@ -284,4 +288,15 @@ void printMsg(char ** array)
                         continue;
                 printf("Line %d:%s\n", whichLine, array[whichLine]);
         }
+}
+
+void initialiseHostname()
+{
+        char tempHostname[1024];
+        tempHostname[1023] = '\0';
+        gethostname(tempHostname, 1023);
+
+        hostname = (char *)malloc((strlen(tempHostname) + 1) * sizeof(char));
+        strcpy(hostname, tempHostname);
+
 }
