@@ -246,23 +246,21 @@ void applyContent(char ** array, int fileAccess, FILE * fp, int length)
                 int chars = countCharacters(fp);
                 array[7] = (char *) malloc((chars + 1) * sizeof(char));
                 fread(array[7], chars, sizeof(char), fp);
-                //for(int whichChar = 0; whichChar < chars; whichChar++)
-                //        array[7][whichChar] = getc(fp);
                 array[7][chars] = '\0';
         }
         else if(fileAccess == NO_PERMS)
         {
-                array[7] = (char *) malloc(length * sizeof(char));
+                array[7] = (char *) malloc((length + 1) * sizeof(char));
                 strcpy(array[7], NO_PERMS_MSG);
         }
         else if(fileAccess == NO_FILE)
         {
-                array[7] = (char *) malloc(length * sizeof(char));
+                array[7] = (char *) malloc((length + 1) * sizeof(char));
                 strcpy(array[7], NO_FILE_MSG);
         }
         else
         {
-                array[7] = (char *) malloc(length * sizeof(char));
+                array[7] = (char *) malloc((length + 1) * sizeof(char));
                 strcpy(array[7], BAD_REQUEST_MSG);
         }
 }
