@@ -44,9 +44,6 @@ void * reader()
 
                         charactersServed += currentWrite;
                 }
-                //if(write(fd, anwser, strlen(anwser)) < 0)
-                //        perror("Write of anwser from request failed");
-
                 printf("        >>>Thread %ld succesfully anwsered serving port request\n", pthread_self());
 
                 free(anwser);

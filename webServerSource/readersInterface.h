@@ -9,6 +9,7 @@
 #define CHANGE_FIELD "#"
 
 #define COMMAND_MAX_SIZE 30
+
 //Shows to the readerThreads that the must exit
 extern int shutdownReceived;
 

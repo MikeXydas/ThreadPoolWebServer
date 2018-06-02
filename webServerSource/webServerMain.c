@@ -105,12 +105,10 @@ int main(int argc, char *argv[])
                 
                 if(whichPort == REQUEST_PORT)
                 {
-                        //printf("Attempted communication on REQUEST_PORT\n");
                         writeOnQueue(incomingFd);
                 }
                 else if(whichPort == COMMAND_PORT)
                 {
-                        //printf("Attempted communication on COMMAND_PORT\n");//Do commands
                         commandReader(incomingFd);
                         close(incomingFd);
                 }

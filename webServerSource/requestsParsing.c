@@ -13,7 +13,6 @@ char rootdir[200];
 char * readRequest(char * req)
 {
         int msgPointer = 4;
-        //int readWholeMsg = 4;
 
         char path[MAX_PATH];
 
@@ -127,9 +126,6 @@ char * createAnwser(char * site, char * rootDir)
         else
                 length = strlen(BAD_REQUEST_MSG);
 
-        //if(fileAccess == SUCCESS)
-        //        applyContentLength(arrayAnwser, length);
-        //else
         applyContentLength(arrayAnwser, length);
 
         //5th line

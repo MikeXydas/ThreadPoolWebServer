@@ -54,9 +54,7 @@ int acceptConnection(int * fds, struct sockaddr *addr, socklen_t *addrlen, int *
                 maxfd = fds[i];
         }
 
-        //printf("Selecting...\n");
         status = select(maxfd + 1, &readfds, NULL, NULL, NULL);
-        //printf("Select returned\n");
         if (status < 0)
                 return -1;
         fd = -1;
