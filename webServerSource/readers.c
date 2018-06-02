@@ -18,7 +18,7 @@ int totalPages = 0;
 void * reader()
 {
         //Big enough that will store the whole header
-        char headerBuf[2000];
+        char headerBuf[2000] = {0};
         while(shutdownReceived == 0)
         {
                 //Read the GET request and send anwser

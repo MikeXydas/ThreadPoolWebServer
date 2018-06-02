@@ -21,7 +21,6 @@ void writeOnQueue(int fd)
 {
         enterWrite();
         insertInQueue(fd, fdQueue);
-        //printf("I am thread %ld and I just pushed %d\n", pthread_self(), fd);
         exitWrite();
 }
 
@@ -30,7 +29,6 @@ int readFromQueue()
         int retFd;
         enterRead();
         retFd = popFromQueue(fdQueue);
-        //printf("I am thread %ld and I just popped %d\n", pthread_self(), retFd);
         exitRead();
         return retFd;
 }
@@ -123,6 +121,7 @@ void exitWrite()
 {
         pthread_mutex_lock(&queueMutex);
         writing--;
+        
         //Only one thread writes so we do not have someone to wake up
         pthread_cond_signal(&cond_read);
         pthread_mutex_unlock(&queueMutex);
