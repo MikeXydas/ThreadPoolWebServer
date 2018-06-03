@@ -1,14 +1,14 @@
 CC = gcc
 SOURCE_WEB_SERVER = webServerSource/webServerMain.c webServerSource/requestsParsing.c webServerSource/fdQueue.c webServerSource/readers.c webServerSource/socketManager.c
-NAME_OF_EXECUTABLE_SERVER = myhhtpd
+NAME_OF_EXECUTABLE_SERVER = myhttpd
 OBJECT = $(SOURCE_WEB_SERVER:.c=.o)
 VALGRIND_FLAGS = --leak-check=yes --leak-check=full --show-leak-kinds=all --track-origins=yes --trace-children=yes -v
 SERVING_PORT = 8085
 COMMAND_PORT = 9085
 WEB_SERVER_THREADS = 10
-ROOT_DIR = /home/mike/Desktop/test/threadPoolWebServer/webSites/
+ROOT_DIR = /home/mike/Desktop/test/threadPoolWebServer/webSites/ #MODIFY CORRECTLY
 HOST = localhost
-REQ_SITE = /site1/page1_2190.html
+REQ_SITE = /site1/page1_2029.html
 
 all: server compTests
 	@echo Compile finished
