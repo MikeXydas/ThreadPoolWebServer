@@ -45,8 +45,6 @@ void main(int argc, char *argv[]) {
         strcat(buf, " HTTP/1.1\r\n");
         strcat(buf, "Host: localhost\r\n\r\n");
         
-        //strcpy(buf, "GET /site0/page0_465.html HTTP/1.1\r\n\r\n");
-
         if(write(sock, buf, strlen(buf)) < 0)
                 perror("Client failed to write on socket");
 

@@ -20,7 +20,7 @@ struct QueueNode
         queueNode * nextNode;
 };
 
-//Queue that will store all the fds
+//Queue that will store all the fds that have been accepted in the serving_port
 extern headOfQueue * fdQueue;
 
 //Global mutex that protects the queue

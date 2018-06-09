@@ -5,7 +5,6 @@
 #include "fdQueueInterface.h"
 #include "readersInterface.h"
 
-//Global initialisation
 
 headOfQueue * fdQueue;
 pthread_mutex_t queueMutex;
